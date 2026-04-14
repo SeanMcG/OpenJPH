@@ -39,6 +39,8 @@
 #ifndef OJPH_CODESTREAM_LOCAL_H
 #define OJPH_CODESTREAM_LOCAL_H
 
+#include <endian.h>
+
 #include "ojph_defs.h"
 #include "ojph_params_local.h"
 
@@ -53,12 +55,14 @@ namespace ojph {
 
   namespace local {
 
+#if __BYTE_ORDER == __LITTLE_ENDIAN
     /////////////////////////////////////////////////////////////////////////
     static inline
     ui16 swap_byte(ui16 t)
     {
       return (ui16)((t << 8) | (t >> 8));
     }
+#endif // __BYTE_ORDER == __LITTLE_ENDIAN
 
     //////////////////////////////////////////////////////////////////////////
     //defined elsewhere
